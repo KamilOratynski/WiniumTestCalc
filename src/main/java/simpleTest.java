@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.winium.DesktopOptions;
 import org.openqa.selenium.winium.WiniumDriver;
 
@@ -18,15 +19,22 @@ public class simpleTest {
         driver = new WiniumDriver(new URL("http://localhost:9999"), option);
         Thread.sleep(5000);
 
-        driver.findElement(By.name("Siedem")).click();
+        driver.findElement(By.name("Dziewięć")).click();
         driver.findElement(By.name("Plus")).click();
-        driver.findElement(By.name("Dwa")).click();
+        driver.findElement(By.name("Dziewięć")).click();
+        driver.findElement(By.name("Pomnóż przez")).click();
+        driver.findElement(By.name("Dziewięć")).click();
         driver.findElement(By.name("Równa się")).click();
 
-        String output = driver.findElement(By.id("CalculatorResults")).getAttribute("Name");
-        System.out.println(output);
-        driver.findElement(By.id("Close")).click();
+        WebElement ChildWindow = driver.findElementById("CalculatorResults");
+        String Element1 = ChildWindow.getAttribute("Name")/*.findElement(By.id("TextContainer"))*/;
+        //String name = Element1.getAttribute("Name");
+        System.out.println(Element1);
 
-        Assert.assertEquals("Wyświetlana wartość to 9", output);
+        //String output = driver.findElement(By.id("CalculatorResults")).getAttribute("Name");
+        //System.out.println(output);
+        //driver.findElement(By.id("Close")).click();
+
+        //Assert.assertEquals("Wyświetlana wartość to 9", output);
     }
 }
