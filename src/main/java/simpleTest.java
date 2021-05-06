@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.winium.DesktopOptions;
 import org.openqa.selenium.winium.WiniumDriver;
@@ -23,8 +24,9 @@ public class simpleTest {
         driver.findElement(By.name("Równa się")).click();
 
         String output = driver.findElement(By.id("CalculatorResults")).getAttribute("Name");
-        System.out.println("Result after addition is: " + output);
-
+        System.out.println(output);
         driver.findElement(By.id("Close")).click();
+
+        Assert.assertEquals("Wyświetlana wartość to 9", output);
     }
 }
